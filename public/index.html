@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AI Email Generator</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <h1>📧 AI Personalized Email Generator</h1>
+
+            <div class="card">
+
+                <h3>Add Customer</h3>
+
+                <input id="username" placeholder="Customer Name">
+
+                <input id="useremail" placeholder="Customer Email">
+
+                <button onclick="addUser()">
+                    Add Customer
+                </button>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Customer List</h3>
+
+                <div id="users"></div>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Campaign Details</h3>
+
+                <input id="product" placeholder="Product Name">
+
+                <input id="discount" placeholder="Discount %">
+
+                <button id="sendBtn" onclick="sendEmail()">
+                    Generate & Send Emails
+                </button>
+
+
+                <div id="loader" style="display:none;">
+                    <div class="spinner"></div>
+                    <p>Generating & Sending Emails...</p>
+                </div>
+
+            </div>
+
+            <div id="msg"></div>
+
+        </div>
+
+        <script src="script.js"></script>
+
+    </body>
+</html>
