@@ -124,7 +124,7 @@ async function sendEmail() {
         sendBtn.disabled = true;
 
         const response = await fetch(
-            "/send-email",
+            "/api/send-email",
             {
                 method: "POST",
                 headers: {
