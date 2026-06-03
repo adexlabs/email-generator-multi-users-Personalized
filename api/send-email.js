@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("public"));
 
-app.post("/send-email", async (req, res) => {
+app.post("/api/send-email", async (req, res) => {
 
     try {
 
