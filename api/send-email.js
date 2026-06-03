@@ -1,12 +1,11 @@
-import nodemailer from "nodemailer";
 import axios from "axios";
+import nodemailer from "nodemailer";
 
 export default async function handler(req, res) {
-
     if (req.method !== "POST") {
         return res.status(405).json({
             success: false,
-            message: "Method not allowed",
+            message: "Method not allowed"
         });
     }
 
@@ -16,7 +15,7 @@ export default async function handler(req, res) {
         if (!users || users.length === 0) {
             return res.status(400).json({
                 success: false,
-                message: "Select at least one user",
+                message: "Select at least one user"
             });
         }
 
@@ -24,8 +23,8 @@ export default async function handler(req, res) {
             service: "gmail",
             auth: {
                 user: process.env.EMAIL_USER,
-                pass: process.env.EMAIL_PASS,
-            },
+                pass: process.env.EMAIL_PASS
+            }
         });
 
         for (const user of users) {
@@ -37,19 +36,31 @@ export default async function handler(req, res) {
                         {
                             role: "system",
                             content:
-                                "You are a professional email marketing assistant.",
+                                "You are a professional email marketing assistant."
                         },
                         {
                             role: "user",
-                            content: `Create a professional marketing email for ${user.name}. Product: ${product}. Discount: ${discount}%`,
-                        },
-                    ],
+                            content: `
+Create a personalized marketing email.
+
+Customer Name: ${user.name}
+Product: ${product}
+Discount: ${discount}%
+
+Keep it professional and under 150 words.
+End with:
+
+Regards,
+Adex Labs Team
+`
+                        }
+                    ]
                 },
                 {
                     headers: {
                         Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-                        "Content-Type": "application/json",
-                    },
+                        "Content-Type": "application/json"
+                    }
                 }
             );
 
@@ -59,21 +70,23 @@ export default async function handler(req, res) {
             await transporter.sendMail({
                 from: process.env.EMAIL_USER,
                 to: user.email,
-                subject: `Exclusive ${discount}% OFF on ${product}`,
-                html: emailContent.replace(/\n/g, "<br>"),
+                subject: `${discount}% OFF on ${product}`,
+                html: emailContent.replace(/\n/g, "<br>")
             });
         }
 
         return res.status(200).json({
             success: true,
-            message: "Emails sent successfully",
+            message: "Emails sent successfully"
         });
+
     } catch (error) {
+
         console.error(error);
 
         return res.status(500).json({
             success: false,
-            error: error.message,
+            error: error.message
         });
     }
-};
+}
