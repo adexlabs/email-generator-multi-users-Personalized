@@ -94,14 +94,6 @@ async function sendEmail() {
 
     const selectedUsers = [];
 
-    const payload = {
-    users: selectedUsers,
-    product: document.getElementById("product").value,
-    discount: document.getElementById("discount").value
-};
-
-console.log("Payload:", payload);
-
     document
         .querySelectorAll(".user-checkbox:checked")
         .forEach(cb => {
@@ -113,7 +105,17 @@ console.log("Payload:", payload);
 
         });
 
-    console.log(selectedUsers);
+    // console.log(selectedUsers);
+
+    console.log("Selected Users:", selectedUsers);
+
+    const payload = {
+        users: selectedUsers,
+        product: document.getElementById("product").value,
+        discount: document.getElementById("discount").value
+    };
+
+    console.log("Payload:", payload);
 
     if (selectedUsers.length === 0) {
         alert("Select at least one user");
