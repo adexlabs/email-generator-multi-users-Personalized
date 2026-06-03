@@ -94,6 +94,14 @@ async function sendEmail() {
 
     const selectedUsers = [];
 
+    const payload = {
+    users: selectedUsers,
+    product: document.getElementById("product").value,
+    discount: document.getElementById("discount").value
+};
+
+console.log("Payload:", payload);
+
     document
         .querySelectorAll(".user-checkbox:checked")
         .forEach(cb => {
