@@ -8,51 +8,23 @@
 
         <div class="container">
 
-            <h1>📧 AI Personalized Email Generator</h1>
+            <h1>AI Personalized Email Generator</h1>
 
-            <div class="card">
+            <input id="username" placeholder="Customer Name">
+            <input id="useremail" placeholder="Customer Email">
 
-                <h3>Add Customer</h3>
+            <button onclick="addUser()">
+                Add Customer
+            </button>
 
-                <input id="username" placeholder="Customer Name">
+            <div id="users"></div>
 
-                <input id="useremail" placeholder="Customer Email">
+            <input id="product" placeholder="Product">
+            <input id="discount" placeholder="Discount %">
 
-                <button onclick="addUser()">
-                    Add Customer
-                </button>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Customer List</h3>
-
-                <div id="users"></div>
-
-            </div>
-
-            <div class="card">
-
-                <h3>Campaign Details</h3>
-
-                <input id="product" placeholder="Product Name">
-
-                <input id="discount" placeholder="Discount %">
-
-                <button id="sendBtn" onclick="sendEmail()">
-                    Generate & Send Emails
-                </button>
-
-
-                <div id="loader" style="display:none;">
-                    <div class="spinner"></div>
-                    <p>Generating & Sending Emails...</p>
-                </div>
-
-            </div>
-
-            <div id="msg"></div>
+            <button onclick="sendEmail()">
+                Generate & Send Emails
+            </button>
 
         </div>
 
