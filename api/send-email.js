@@ -1,6 +1,5 @@
-const cors = require("cors");
-const nodemailer = require("nodemailer");
-const axios = require("axios");
+import nodemailer from "nodemailer";
+import axios from "axios";
 
 export default async function handler(req, res) {
 
@@ -10,7 +9,7 @@ export default async function handler(req, res) {
             message: "Method not allowed",
         });
     }
-    
+
     try {
         const { users, product, discount } = req.body;
 
